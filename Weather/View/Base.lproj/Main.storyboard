@@ -133,34 +133,37 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qC-et-iEF" userLabel="TopView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTN-Q1-UDi">
-                                        <rect key="frame" x="69" y="214.5" width="237" height="40"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="0.2753638698630137" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="k6P-I2-uAj">
+                                        <rect key="frame" x="69" y="110.5" width="237" height="113"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dg-BN-I6R">
+                                                <rect key="frame" x="15" y="0.0" width="207" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="OqC-nz-SJi"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bTN-Q1-UDi">
+                                                <rect key="frame" x="0.0" y="60" width="237" height="53"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="0.2753638698630137" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                                <state key="normal" title="   Get Weather!   ">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="cUK-2T-X7h"/>
+                                            <constraint firstAttribute="trailing" secondItem="3dg-BN-I6R" secondAttribute="trailing" constant="15" id="4GB-Ww-qE8"/>
+                                            <constraint firstItem="3dg-BN-I6R" firstAttribute="leading" secondItem="k6P-I2-uAj" secondAttribute="leading" constant="15" id="gtz-jZ-6qh"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                        <state key="normal" title="   Get Weather!   ">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3dg-BN-I6R">
-                                        <rect key="frame" x="93" y="149.5" width="189" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="wLU-w1-Ea7"/>
-                                            <constraint firstAttribute="width" constant="189" id="x0d-pL-oh3"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="bTN-Q1-UDi" firstAttribute="centerX" secondItem="3qC-et-iEF" secondAttribute="centerX" id="0bz-VF-rpT"/>
-                                    <constraint firstItem="bTN-Q1-UDi" firstAttribute="top" secondItem="3dg-BN-I6R" secondAttribute="bottom" constant="30" id="F6T-xf-2VE"/>
-                                    <constraint firstItem="3dg-BN-I6R" firstAttribute="centerY" secondItem="3qC-et-iEF" secondAttribute="centerY" id="MrB-jj-mOx"/>
-                                    <constraint firstItem="3dg-BN-I6R" firstAttribute="centerX" secondItem="3qC-et-iEF" secondAttribute="centerX" id="mB2-EX-1dO"/>
+                                    <constraint firstItem="k6P-I2-uAj" firstAttribute="centerY" secondItem="3qC-et-iEF" secondAttribute="centerY" id="52Z-90-yj7"/>
+                                    <constraint firstItem="k6P-I2-uAj" firstAttribute="centerX" secondItem="3qC-et-iEF" secondAttribute="centerX" id="y6e-xx-jaU"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fa7-S6-QrM" userLabel="BottomView">
