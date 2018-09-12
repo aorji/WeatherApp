@@ -40,16 +40,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     //didUpdateLocation
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
-        if location.horizontalAccuracy > 0 {
-            locationManager.stopUpdatingLocation()
-            locationManager.delegate = nil
-            
-            let longitude = String(location.coordinate.longitude)
-            let latitude = String(location.coordinate.latitude)
-            let params : [String : String] = ["lat": latitude, "lon" : longitude, "appid" : APP_ID]
-            
-            getWeatherData(url: WEATHER_URL, parameters: params)
-        }
+            if location.horizontalAccuracy > 0 {
+                locationManager.stopUpdatingLocation()
+                locationManager.delegate = nil
+                
+                let longitude = String(location.coordinate.longitude)
+                let latitude = String(location.coordinate.latitude)
+                
+                print(longitude)
+                print(latitude)
+                
+                let params : [String : String] = ["lat": latitude, "lon" : longitude, "appid" : APP_ID]
+                
+                getWeatherData(url: WEATHER_URL, parameters: params)
+            }
+        
     }
     
     //didFailWithError
