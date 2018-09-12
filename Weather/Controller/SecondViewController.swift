@@ -8,8 +8,26 @@
 
 import UIKit
 
+protocol ChangeCityDelegate {
+    func newCityEntered (city: String)
+}
+
 class SecondViewController: UIViewController {
 
+    var delegate : ChangeCityDelegate?
+    
+    @IBOutlet weak var newCityName: UITextField!
+    
+    @IBAction func getWeatherButton(_ sender: UIButton) {
+        let cityName = newCityName.text!
+        delegate?.newCityEntered(city: cityName)
+         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func swichPressed(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

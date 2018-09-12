@@ -81,7 +81,7 @@
                                     <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ot4-fn-BRD" kind="show" id="32H-US-9sT"/>
+                                    <segue destination="Ot4-fn-BRD" kind="show" identifier="changeCityName" id="32H-US-9sT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -125,16 +125,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cityBackground" translatesAutoresizingMaskIntoConstraints="NO" id="cZa-uH-WmC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eap-VW-8wX">
-                                <rect key="frame" x="25" y="45" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="4wU-re-xs9"/>
-                                    <constraint firstAttribute="height" constant="32" id="m8S-gO-hr1"/>
-                                </constraints>
-                                <state key="normal" image="left">
-                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qC-et-iEF" userLabel="TopView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
                                 <subviews>
@@ -158,6 +148,9 @@
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="getWeatherButton:" destination="Ot4-fn-BRD" eventType="touchUpInside" id="Gkc-M9-RHy"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -174,6 +167,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fa7-S6-QrM" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="333" width="375" height="333.5"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eap-VW-8wX" userLabel="swichButton">
+                                <rect key="frame" x="25" y="45" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="4wU-re-xs9"/>
+                                    <constraint firstAttribute="height" constant="32" id="m8S-gO-hr1"/>
+                                </constraints>
+                                <state key="normal" image="left">
+                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="swichPressed:" destination="Ot4-fn-BRD" eventType="touchUpInside" id="4xM-Eh-wfa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -195,6 +201,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BYF-OK-wE3"/>
                     </view>
+                    <connections>
+                        <outlet property="newCityName" destination="3dg-BN-I6R" id="2SL-zu-ipk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVc-UP-SWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
