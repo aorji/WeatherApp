@@ -17,6 +17,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let APP_ID = "cfb4888a8db82f14c9978548cc66696a"
     
     let locationManager = CLLocationManager()
+    let weatherDataModel = WeatherDataModel()
     
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
@@ -31,19 +32,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //MARK: - JSON Parsing
-    /***************************************************************/
-    
-
-    
-    //MARK: - UI Updates
-    /***************************************************************/
     
     
     //MARK: - Location Manager Delegate Methods
@@ -54,10 +42,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
             locationManager.stopUpdatingLocation()
+            locationManager.delegate = nil
+            
             let longitude = String(location.coordinate.longitude)
             let latitude = String(location.coordinate.latitude)
-            
             let params : [String : String] = ["lat": latitude, "lon" : longitude, "appid" : APP_ID]
+            
             getWeatherData(url: WEATHER_URL, parameters: params)
         }
     }
@@ -68,6 +58,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         cityLabel.text = "Location Unavailable"
     }
     
+    
     //MARK: - Networking
     /***************************************************************/
     func getWeatherData(url: String, parameters: [String : String]) {
@@ -75,12 +66,42 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             response in
             if response.result.isSuccess {
                 print("Got the weather")
+                let weatherJSON : JSON  = JSON(response.result.value!)
+//                print(weatherJSON)
+                self.updateWeatherData(json: weatherJSON)
             }
             else {
                 self.cityLabel.text = "Connection Issues"
                 print("Error \(String(describing: response.result.error))")
             }
         }
+    }
+    
+    
+    //MARK: - JSON Parsing
+    /***************************************************************/
+    func updateWeatherData(json : JSON) {
+        if let tempetature = json["main"]["temp"].double {
+        weatherDataModel.temperature = Int(tempetature - 273.15)
+        weatherDataModel.city = json["name"].stringValue
+        weatherDataModel.condition = json["weather"][0]["id"].intValue
+        weatherDataModel.weatherIconName = weatherDataModel.updateWeatherIcon(condition: weatherDataModel.condition)
+        updateUIWithWeatherData()
+        }
+        else {
+            cityLabel.text = "Weather Unavailable"
+        }
+        
+    }
+    
+    
+    //MARK: - UI Updates (User Interface)
+    /***************************************************************/
+    func updateUIWithWeatherData(){
+        cityLabel.text = weatherDataModel.city
+        temperatureLabel.text = String(weatherDataModel.temperature)
+        weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
+        
     }
     
     //MARK: - Change City Delegate methods
